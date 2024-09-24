@@ -11,7 +11,7 @@ const MeContext = createContext<{
   ) => void;
 } | null>(null);
 
-function MeContextProvider({ children }: { children: ReactNode }) {
+const MeContextProvider = ({ children }: { children: ReactNode }) => {
   const { data, isLoading, refetch } = useQuery(QueryKeys.me, getMe);
 
   return (
@@ -19,8 +19,7 @@ function MeContextProvider({ children }: { children: ReactNode }) {
       {isLoading ? <Loader /> : children}
     </MeContext.Provider>
   );
-}
-
+};
 
 const useMeContext = () => {
   const context = useContext(MeContext);

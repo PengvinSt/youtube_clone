@@ -1,15 +1,15 @@
 import { Video, VideoModel } from "./video.model";
 
-export function createVideo({ owner }: { owner: string }) {
+export const createVideo = ({ owner }: { owner: string }) => {
   return VideoModel.create({ owner });
-}
+};
 
-export function findVideo(videoId: Video["videoId"]) {
+export const findVideo = (videoId: Video["videoId"]) => {
   return VideoModel.findOne({ videoId });
-}
+};
 
-export function findVideos() {
+export const findVideos = () => {
   return VideoModel.find({
     published: true,
   }).lean();
-}
+};

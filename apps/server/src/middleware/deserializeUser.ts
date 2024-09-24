@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { verifyJwt } from "../modules/auth/auth.utils";
 
-function deserializeUser(req: Request, res: Response, next: NextFunction) {
+const deserializeUser = (req: Request, res: Response, next: NextFunction) => {
   const accessToken = (
     req.headers.authorization ||
     req.cookies.accessToken ||
@@ -19,6 +19,6 @@ function deserializeUser(req: Request, res: Response, next: NextFunction) {
   }
 
   return next();
-}
+};
 
 export default deserializeUser;

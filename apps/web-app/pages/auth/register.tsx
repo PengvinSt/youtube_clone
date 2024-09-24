@@ -16,7 +16,7 @@ import { ReactElement } from "react";
 import { useMutation } from "react-query";
 import { registerUser } from "../../api";
 
-function RegisterPage() {
+const RegisterPage = () => {
   const router = useRouter();
 
   const form = useForm({
@@ -102,6 +102,6 @@ function RegisterPage() {
       </Container>
     </>
   );
-}
+};
 
 export default RegisterPage;

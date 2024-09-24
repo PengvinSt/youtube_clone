@@ -10,17 +10,17 @@ const MIME_TYPES = ["video/mp4"];
 
 const CHUNK_SIZE_IN_BYTES = 1000000; // 1mb
 
-function getPath({
+const getPath = ({
   videoId,
   extension,
 }: {
   videoId: Video["videoId"];
   extension: Video["extension"];
-}) {
+}) => {
   return `${process.cwd()}/videos/${videoId}.${extension}`;
-}
+};
 
-export async function uploadVideoHandler(req: Request, res: Response) {
+export const uploadVideoHandler = async (req: Request, res: Response) => {
   const bb = busboy({ headers: req.headers });
 
   const user = res.locals.user;
@@ -59,12 +59,12 @@ export async function uploadVideoHandler(req: Request, res: Response) {
   });
 
   return req.pipe(bb);
-}
+};
 
-export async function updateVideoHandler(
+export const updateVideoHandler = async (
   req: Request<UpdateVideoParams, {}, UpdateVideoBody>,
   res: Response
-) {
+) => {
   const { videoId } = req.params;
   const { title, description, published } = req.body;
 
@@ -87,9 +87,9 @@ export async function updateVideoHandler(
   await video.save();
 
   return res.status(StatusCodes.OK).send(video);
-}
+};
 
-export async function streamVideoHandler(req: Request, res: Response) {
+export const streamVideoHandler = async (req: Request, res: Response) => {
   const { videoId } = req.params;
 
   const range = req.headers.range;
@@ -136,10 +136,10 @@ export async function streamVideoHandler(req: Request, res: Response) {
   });
 
   videoStream.pipe(res);
-}
+};
 
-export async function findVideosHandler(_: Request, res: Response) {
+export const findVideosHandler = async (_: Request, res: Response) => {
   const videos = await findVideos();
 
   return res.status(StatusCodes.OK).send(videos);
-}
+};

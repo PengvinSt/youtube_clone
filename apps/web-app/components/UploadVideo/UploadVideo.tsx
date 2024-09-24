@@ -12,19 +12,19 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { Dropzone, MIME_TYPES } from "@mantine/dropzone";
 import { ArrowBigUpLine } from "tabler-icons-react";
 import { useMutation } from "react-query";
-import { updateVideo, uploadVideo } from "../api";
 import { useForm } from "@mantine/hooks";
-import { Video } from "../types";
 import { AxiosError, AxiosResponse } from "axios";
-import { useVideoContext } from "../context/VideoContext";
+import { useVideoContext } from "../../context/VideoContext";
+import { updateVideo, uploadVideo } from "../../api";
+import { Video } from "../../types";
 
-function EditVideoForm({
+const EditVideoForm = ({
   videoId,
   setOpened,
 }: {
   videoId: string;
   setOpened: Dispatch<SetStateAction<boolean>>;
-}) {
+}) => {
   const { refetch } = useVideoContext();
   const form = useForm({
     initialValues: {
@@ -71,9 +71,9 @@ function EditVideoForm({
       </Stack>
     </form>
   );
-}
+};
 
-function UploadVideo() {
+const UploadVideo = () => {
   const [opened, setOpened] = useState(false);
   const [progress, setProgress] = useState(0);
 
@@ -89,13 +89,13 @@ function UploadVideo() {
     },
   };
 
-  function upload(files: File[]) {
+  const upload = (files: File[]) => {
     const formData = new FormData();
 
     formData.append("video", files[0]);
 
     mutation.mutate({ formData, config });
-  }
+  };
 
   return (
     <>
@@ -148,6 +148,6 @@ function UploadVideo() {
       <Button onClick={() => setOpened(true)}>Upload video</Button>
     </>
   );
-}
+};
 
 export default UploadVideo;

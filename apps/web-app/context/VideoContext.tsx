@@ -11,7 +11,7 @@ const VideoContext = createContext<{
   ) => void;
 } | null>(null);
 
-function VideosContextProvider({ children }: { children: ReactNode }) {
+const VideosContextProvider = ({ children }: { children: ReactNode }) => {
   const { data, isLoading, refetch } = useQuery(QueryKeys.videos, getVideos);
 
   return (
@@ -24,12 +24,14 @@ function VideosContextProvider({ children }: { children: ReactNode }) {
       {isLoading ? <Loader /> : children}
     </VideoContext.Provider>
   );
-}
+};
 
 const useVideoContext = () => {
   const context = useContext(VideoContext);
   if (!context) {
-    throw new Error("useVideoContext must be used within a VideosContextProvider");
+    throw new Error(
+      "useVideoContext must be used within a VideosContextProvider"
+    );
   }
   return context;
 };

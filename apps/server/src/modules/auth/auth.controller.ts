@@ -5,10 +5,10 @@ import { findUserByEmail } from "../user/user.service";
 import { LoginBody } from "./auth.schema";
 import { signJwt } from "./auth.utils";
 
-export async function loginHandler(
+export const loginHandler = async (
   req: Request<{}, {}, LoginBody>,
   res: Response
-) {
+) => {
   const { email, password } = req.body;
 
   // find the user by email
@@ -34,4 +34,4 @@ export async function loginHandler(
   });
 
   return res.status(StatusCodes.OK).send(jwt);
-}
+};

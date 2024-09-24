@@ -3,10 +3,10 @@ import { StatusCodes } from "http-status-codes";
 import { RegisterUserBody } from "./user.schema";
 import { createUser } from "./user.service";
 
-export async function registerUserHandler(
+export const registerUserHandler = async (
   req: Request<{}, {}, RegisterUserBody>,
   res: Response
-) {
+) => {
   const { username, email, password } = req.body;
 
   try {
@@ -20,4 +20,4 @@ export async function registerUserHandler(
 
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(e.message);
   }
-}
+};

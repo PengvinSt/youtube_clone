@@ -6,7 +6,7 @@ import { MantineProvider } from "@mantine/core";
 import { NotificationsProvider } from "@mantine/notifications";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
-import { MeContextProvider } from "../context/me";
+import { MeContextProvider } from "../context/MeContext";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +18,7 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-export default function App(props: AppPropsWithLayout) {
+export const App = (props: AppPropsWithLayout) => {
   const { Component, pageProps } = props;
 
   // Use the layout defined at the page level, if available
@@ -56,4 +56,4 @@ export default function App(props: AppPropsWithLayout) {
       </MantineProvider>
     </>
   );
-}
+};

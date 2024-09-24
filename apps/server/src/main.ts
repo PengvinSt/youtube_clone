@@ -36,7 +36,7 @@ const server = app.listen(PORT, async () => {
 
 const signals = ["SIGTERM", "SIGINT"];
 
-function gracefulShutdown(signal: string) {
+const gracefulShutdown = (signal: string) => {
   process.on(signal, async () => {
     logger.info("Goodbye, got signal", signal);
     server.close();
@@ -48,7 +48,7 @@ function gracefulShutdown(signal: string) {
 
     process.exit(0);
   });
-}
+};
 
 for (let i = 0; i < signals.length; i++) {
   gracefulShutdown(signals[i]);

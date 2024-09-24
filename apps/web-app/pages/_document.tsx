@@ -2,7 +2,7 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { createGetInitialProps } from "@mantine/next";
 
-function Document() {
+const Document = () => {
   return (
     <Html>
       <Head />
@@ -12,7 +12,7 @@ function Document() {
       </body>
     </Html>
   );
-}
+};
 
 Document.getInitialProps = createGetInitialProps();
 

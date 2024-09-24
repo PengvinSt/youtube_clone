@@ -3,12 +3,11 @@ import React from "react";
 import Image from "next/image";
 
 import Link from "next/link";
-import UploadVideo from "../components/UploadVideo";
 import { VideosContextProvider } from "../context/VideoContext";
 import { useMeContext } from "../context/MeContext";
+import UploadVideo from "../components/UploadVideo/UploadVideo";
 
-
-function HomePageLayout({ children }: { children: React.ReactNode }) {
+const HomePageLayout = ({ children }: { children: React.ReactNode }) => {
   const { user, refetch } = useMeContext();
 
   return (
@@ -51,6 +50,6 @@ function HomePageLayout({ children }: { children: React.ReactNode }) {
       </AppShell>
     </VideosContextProvider>
   );
-}
+};
 
 export default HomePageLayout;

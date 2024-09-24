@@ -1,8 +1,8 @@
 import { Card, Text } from "@mantine/core";
 import Link from "next/link";
-import { Video } from "../types";
+import { Video } from "../../types";
 
-function VideoTeaser({ video }: { video: Video }) {
+const VideoTeaser = ({ video }: { video: Video }) => {
   return (
     <Link href={`/watch/${video.videoId}`} passHref>
       <Card shadow="sm" p="xl" component="a" href={`/watch/${video.videoId}`}>
@@ -14,6 +14,6 @@ function VideoTeaser({ video }: { video: Video }) {
       </Card>
     </Link>
   );
-}
+};
 
 export default VideoTeaser;

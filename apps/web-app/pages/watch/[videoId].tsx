@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 
-function WatchVideoPage() {
+const WatchVideoPage = () => {
   const { query } = useRouter();
 
   return (
@@ -15,6 +15,6 @@ function WatchVideoPage() {
       />
     </div>
   );
-}
+};
 
 export default WatchVideoPage;

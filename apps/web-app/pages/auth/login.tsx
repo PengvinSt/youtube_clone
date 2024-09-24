@@ -16,7 +16,7 @@ import { ReactElement } from "react";
 import { useMutation } from "react-query";
 import { login } from "../../api";
 
-function LoginPage() {
+const LoginPage = () => {
   const router = useRouter();
 
   const form = useForm({
@@ -70,6 +70,6 @@ function LoginPage() {
       </Container>
     </>
   );
-}
+};
 
 export default LoginPage;
