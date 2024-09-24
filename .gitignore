@@ -1,0 +1,23 @@
+# Ignore SSL certs folder
+cicd/ssl/*
+volumes
+
+# Ignore .env
+.env
+
+.DS_Store
+
+node_modules
+dist
+build
+
+*.afphoto
+
+# Ignore Editors
+.idea
+.vscode
+
+cron.lock
+
+# Ignore tap output
+.tap
